@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2nd Page</title>
+    <link rel="stylesheet" href="./style2.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <nav>
+      <img src="./Assests/redLogo.png" alt="logo" class="logo" />
+
+      <section class="searchBar">
+        <div class="loca">
+          <input type="text" id="locationSearch2" placeholder="Where are you going?"/>
+        </div>
+        <div style="border-left: 1px solid rgb(151, 151, 151); height: 25px;"></div>
+
+        <div class="CheckIn">
+          <input type="text" id="CheckInSearch2" placeholder="Add dates" />
+        </div>
+        <div style="border-left: 1px solid rgb(151, 151, 151); height: 25px;"></div>
+
+        <div class="Guests">
+          <input type="text" id="GuestsSearch2" placeholder="Add guests" />
+        </div>
+
+        <button id="searchBtn">
+          <i
+            class="fa-solid fa-magnifying-glass fa-lg"
+            style="color: #f8f3f3"
+          ></i>
+        </button>
+      </section>
+
+      <div class="user">
+        <p><a href="#">Become a Host</a></p>
+        <img src="./Assests/BlackGlobe.png" alt="globe" class="globe" />
+        <div class="userInfo">
+          <img src="./Assests/menu.jpg" alt="bm" class="bugerMenu" />
+          <img src="./Assests/User.png" alt="user" class="userFace" />
+        </div>
+      </div>
+    </nav>
+
+    <div class="topList">
+      <button id="price">
+        price
+        <select>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+      </button>
+
+      <button id="place">
+        Type of Place
+        <select>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+          <option value=""></option>
+        </select>
+      </button>
+
+      <button>Free cancellation</button>
+      <button>Wifi</button>
+      <button>Kitchen</button>
+      <button>Air conditioning</button>
+      <button>Washer</button>
+      <button>Iron</button>
+      <button>Dedicated workspace</button>
+      <button>Free parking</button>
+      <button>Dryer</button>
+      <button>Filters</button>
+    </div>
+
+    <div class="mainPage">
+      <div class="leftpage" id="leftpage">
+        <!-- <p>200+ stays in Bordeaux</p> -->
+
+        <div id="cards">
+          
+        </div>
+
+      </div>
+      
+      <div id="rightPageMAP"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

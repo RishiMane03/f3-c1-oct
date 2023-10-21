@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--gray-200, #e5e7eb);
+  background: var(--white, #fff);
+  /* shadow-md */
+  box-shadow: 0px 4px 6px 0px rgba(31, 41, 55, 0.1),
+    0px 2px 4px 0px rgba(31, 41, 55, 0.06);
+  /* padding: 6px 6px 6px 6px; */
+  padding: 5px 10px;
+  border-radius: 1000px;
+  margin-left: 8%;
+  width: 500px;
+}
+.searchBar input {
+  border: none;
+  outline: none;
+  font-weight: 600;
+  width: 100px;
+  /* border: 1px solid cyan; */
+  margin-left: 10px;
+}
+
+#locationSearch2{
+  width: 150px;
+}
+
+#searchBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #de3151;
+  border: none;
+  cursor: pointer;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 2px solid green; */
+  width: 20%;
+}
+.user a {
+  text-decoration: none;
+  color: black;
+}
+.userInfo {
+  display: flex;
+  border: 2px solid gray;
+  gap: 15px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid var(--gray-200, #e5e7eb);
+  background: var(--white, #fff);
+}
+/* //////////////////////////////////////////////////////////////////////////////// */
+
+/* TopList */
+
+select{
+  border: none;
+  outline: none;
+}
+
+.topList {
+  display: flex;
+  /* border: 2px solid green; */
+  gap: 20px;
+  padding: 10px 25px;
+}
+.topList button {
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  border: 1px solid var(--gray-200, #e5e7eb);
+  background: var(--white, #fff);
+  box-shadow: 0px 1px 2px 0px rgba(31, 41, 55, 0.08);
+  color: var(--gray-700, #374151);
+  font-size: 14px;
+  font-weight: 400;
+}
+#price {
+  display: flex;
+}
+#place {
+  display: flex;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////// */
+
+/* Main Page */
+
+/* Left Side */
+
+#cards{
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.mainPage {
+  display: flex;
+  /* border: 2px solid blueviolet; */
+  margin-top: 10px;
+}
+.leftpage {
+  /* border: 2px solid red; */
+  flex: 1;
+  margin-left: 25px;
+}
+
+.leftpage p {
+  padding: 40px 25px;
+  color: var(--gray-500, #6b7280);
+  font-size: 16px;
+  font-weight: 400;
+}
+.divider {
+  padding: 10px 25px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#card {
+  display: flex;
+  /* border: 2px solid crimson; */
+  margin: 10px;
+  height: 250px;
+  width: 870px;
+  padding: 0px 12px;
+}
+.leftimg img {
+  height: 250px;
+  width: 320px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px gray;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+}
+
+.right h3 {
+  padding: 20px 25px;
+  margin-top: -57px;
+  color: var(--gray-700, #374151);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+}
+.right p {
+  margin-top: -30px;
+  color: var(--gray-500, #6b7280);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
+.right img {
+  margin-left: 25px;
+}
+.info {
+  margin-top: -30px;
+}
+.bottom {
+  display: flex;
+  gap: 150px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+/* MAP */
+
+#rightPageMAP {
+  /* border: 2px solid rgb(14, 1, 1); */
+  flex: 1;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.map{
+  height: 100vh;
+  width: 98%;
+}
