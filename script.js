@@ -47,7 +47,7 @@ const url =
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "0c53385a04msh1537c9c01f83922p1d86ffjsnb55029407ebd", //ram
+    "X-RapidAPI-Key": "fa05f78efbmshc40823ec7055b1fp1b5aa8jsn590dc6b9f700", //ram
     "X-RapidAPI-Host": "airbnb13.p.rapidapi.com",
   },
 };
@@ -63,6 +63,29 @@ async function getData() {
   }
 }
 
+
+
+
+
+// Geolocation:-
+
+let userLocation;
+
+window.onload = () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            userLocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+        });
+    }
+}
+
+
+
+let locationArr = [];
+const markers = [];
 
 
 
@@ -82,8 +105,9 @@ function renderData(arrayOfHotel) {
   leftpage.appendChild(ptag);
 
 
-  mapLocation(filteredData[0].lat,filteredData[0].lng);
+  // mapLocation(filteredData[0].lat,filteredData[0].lng);
   filteredData.forEach((hotel) => {
+
       const hotelCard = document.createElement("div");
       hotelCard.id = 'card'
       hotelCard.style.borderTop = "1px solid rgb(151, 151, 151)";
@@ -118,26 +142,104 @@ function renderData(arrayOfHotel) {
             </div>
       `
 
+      // Add a button for booking cost breakdown
+      const costButton = document.createElement("button");
+      costButton.innerText = "Show Booking Cost Breakdown";
+      costButton.className = "costBtn"
+      costButton.addEventListener("click", () => showBookingCostBreakdown(hotel));
+      hotelCard.appendChild(costButton);
+
+
+      locationArr.push(hotel.lat,hotel.lng,hotel.name)
+
       cards.appendChild(hotelCard);
-      
+ 
     });
+
+
+    
+    for (let i = 0; i < locationArr.length; i += 3) {
+      const lat = locationArr[i];
+      const lng = locationArr[i + 1];
+      const info = locationArr[i + 2];
+      markers.push({ lat, lng, info });
+    }
+    
+    console.log(markers);
+
+    let map =  new google.maps.Map( 
+      document.getElementById('map'), {zoom: 12, center:{lat: markers[0].lat, lng: markers[0].lng}}
+    );
+
+    markers.forEach(m => {
+      let marker = new google.maps.Marker({
+          position: {lat: m.lat, lng: m.lng}, 
+          map: map,
+          title: m.info
+      })
+      ///////////////////////////////////////////////////////////
+      let popup = new google.maps.InfoWindow();
+      google.maps.event.addListener(marker, 'click', (function(marker){
+          return function(){
+              popup.setContent(m.info)
+              popup.open(map,marker)
+          }
+      })(marker)
+      )
+  
+      marker.setMap(map)
+  })
 }
 
-// MAP
-function mapLocation(latitude, longitude) {
-  const lati = latitude;
-  const long = longitude;
-  console.log(latitude,longitude);
-  const maptag = document.getElementById("rightPageMAP");
-  const iframe = document.createElement("iframe");
 
-  const url = `https://maps.google.com/maps?q=${lati},${long}&z=15&output=embed`;
-  iframe.src = url;
-  iframe.className = "map";
-  maptag.appendChild(iframe);
-}
+
+  function showBookingCostBreakdown(listing) {
+    // Calculate additional fees and total cost
+    const additionalFees = listing.price.total * 0.10; // Assuming additional fees are 10% of base price
+    const totalCost = listing.price.total + additionalFees;
+
+    // Create a modal dialog box
+    const modal = document.createElement("div");
+    modal.style.display = "block";
+    modal.style.width = "400px";
+    modal.style.height = "300px";
+    modal.style.backgroundColor = "#fff";
+    modal.style.position = "fixed";
+    modal.style.top = "50%";
+    modal.style.left = "50%";
+    modal.style.transform = "translate(-50%, -50%)";
+    modal.style.padding = "55px";
+    modal.style.borderRadius = "15px";
+    modal.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+    modal.style.display = "flex";
+    modal.style.flexDirection = "column";
+    modal.style.gap = "23px";
+    modal.style.fontSize = "20px";
+
+    // Add booking cost breakdown to the modal
+    modal.innerHTML = `
+        <h2>Booking Cost Breakdown</h2>
+        <p>Base Rate: $${listing.price.total}</p>
+        <p>Additional Fees: $${additionalFees}</p>
+        <p>Total Cost: $${totalCost}</p>
+    `;
+
+    // Add a close button to the modal
+    const closeButton = document.createElement("button");
+    closeButton.innerText = "Close";
+    closeButton.className = 'closeBtn'
+    closeButton.addEventListener("click", () => modal.style.display = "none");
+    modal.appendChild(closeButton);
+
+    // Add the modal to the body
+    document.body.appendChild(modal);
+  }
+
+
 
 getData();
+
+
 
 
 /* MAP

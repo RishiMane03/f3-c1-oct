@@ -125,7 +125,7 @@ select{
 }
 .leftpage {
   /* border: 2px solid red; */
-  flex: 1;
+  flex: 6;
   margin-left: 25px;
 }
 
@@ -145,9 +145,9 @@ select{
   display: flex;
   /* border: 2px solid crimson; */
   margin: 10px;
-  height: 250px;
+  height: 300px;
   width: 870px;
-  padding: 0px 12px;
+  padding: 10px 12px;
 }
 .leftimg img {
   height: 250px;
@@ -189,16 +189,38 @@ select{
   margin-top: 50px;
 }
 
-/* MAP */
+/* New Map */
 
-#rightPageMAP {
-  /* border: 2px solid rgb(14, 1, 1); */
-  flex: 1;
-  height: 100vh;
-  overflow: hidden;
+#map {
+  height: 90vh;
+  width: 100%;
+  flex: 4;
 }
 
-.map{
-  height: 100vh;
-  width: 98%;
+
+.closeBtn{
+  padding: 6px;
+  color: snow;
+  background: crimson;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+}
+.closeBtn:hover{
+  background-color: red;
+  color: white;
+}
+
+.costBtn{
+  height: 42px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.costBtn:hover{
+  background-color: black;
+  color: white;
 }
